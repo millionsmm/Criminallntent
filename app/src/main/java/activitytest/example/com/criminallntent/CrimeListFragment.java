@@ -1,5 +1,6 @@
 package activitytest.example.com.criminallntent;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -15,6 +16,7 @@ import android.widget.Toast;
 import org.w3c.dom.Text;
 
 import java.util.List;
+import java.util.UUID;
 
 /**
  * Created by Administrator on 2017/6/26 0026.
@@ -27,6 +29,13 @@ public class CrimeListFragment extends Fragment {
     private TextView mDateTextView;
     private CheckBox mSolvedCheckBox;
     private Crime mCrime;
+
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        UUID crimeId=(UUID)getActivity().getIntent().getSerializableExtra(CrimeActivity.EXTRA_CRIME_ID);
+        mCrime = CrimeLab.get(getActivity()).getCrime(crimeId);
+    }
 
     @Nullable
     @Override
@@ -57,7 +66,8 @@ public class CrimeListFragment extends Fragment {
 
         @Override
         public void onClick(View v) {
-            Toast.makeText(getActivity(),mCrime.getTitle()+" clicked!", Toast.LENGTH_SHORT).show();
+            Intent intent=CrimeActivity.newIntent(getActivity(),mCrime.getId());
+            startActivity(intent);
         }
 
         public void bindCrime(Crime crime){
