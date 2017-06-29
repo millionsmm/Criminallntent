@@ -11,12 +11,14 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CheckBox;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import org.w3c.dom.Text;
+
+
 
 import java.util.List;
-import java.util.UUID;
+
+
+
 
 /**
  * Created by Administrator on 2017/6/26 0026.
@@ -30,12 +32,6 @@ public class CrimeListFragment extends Fragment {
     private CheckBox mSolvedCheckBox;
     private Crime mCrime;
 
-    @Override
-    public void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        UUID crimeId=(UUID)getActivity().getIntent().getSerializableExtra(CrimeActivity.EXTRA_CRIME_ID);
-        mCrime = CrimeLab.get(getActivity()).getCrime(crimeId);
-    }
 
     @Nullable
     @Override
@@ -46,11 +42,23 @@ public class CrimeListFragment extends Fragment {
         updateUI();
         return view;
     }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        updateUI();
+    }
+
     private void updateUI(){
         CrimeLab crimeLab=CrimeLab.get(getActivity());
         List<Crime> crimes=crimeLab.getCrimes();
-        mAdapter= new CrimeAdapter(crimes);
-        mCrimeRecyclerView.setAdapter(mAdapter);
+        if(mAdapter==null){
+            mAdapter= new CrimeAdapter(crimes);
+            mCrimeRecyclerView.setAdapter(mAdapter);
+        }else {
+            mAdapter.notifyDataSetChanged();
+        }
+
     }
 
     private class CrimeHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
