@@ -98,7 +98,7 @@ public class CrimeFragment extends Fragment {
                 mCrime.setSolved(isChecked);
             }
         });
-        /**
+
         mReportButton=(Button)view.findViewById(R.id.crime_report);
         mReportButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -110,7 +110,7 @@ public class CrimeFragment extends Fragment {
                 startActivity(i);
             }
         });
-         */
+
         return view;
     }
 
@@ -151,4 +151,5 @@ public class CrimeFragment extends Fragment {
         String report=getString(R.string.crime_report,mCrime.getTitle(),dateString,solvedString,suspect);
         return report;
     }
+
 }
