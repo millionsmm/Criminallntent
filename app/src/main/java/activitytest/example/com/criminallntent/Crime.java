@@ -13,6 +13,16 @@ public class Crime {
     private Date mDate;
     private boolean mSolved;
 
+    public String getSuspect() {
+        return mSuspect;
+    }
+
+    public void setSuspect(String suspect) {
+        mSuspect = suspect;
+    }
+
+    private String mSuspect;
+
     public Crime(){
         this(UUID.randomUUID());
         //mId=UUID.randomUUID();//生成唯一id

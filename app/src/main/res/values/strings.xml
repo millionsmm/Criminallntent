@@ -12,4 +12,6 @@
         <item quantity="one">%1$s crime</item>
         <item quantity="other">%1$s crimes</item>
     </plurals>
+    <string name="crime_suspect_text">CHOOSE SUSPECT</string>
+    <string name="crime_report_text">SEND CRIME REPORT</string>
 </resources>
