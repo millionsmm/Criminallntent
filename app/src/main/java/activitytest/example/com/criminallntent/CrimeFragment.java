@@ -3,6 +3,7 @@ package activitytest.example.com.criminallntent;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.provider.ContactsContract;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -28,11 +29,13 @@ public class CrimeFragment extends Fragment {
     private static final String ARG_CRIME_ID="crime_id";
     private static final String DIALOG_DATE="DialogDate";
     private static final int REQUEST_DATE=0;
+    private static final int REQUEST_CONTACT=1;
     private Crime mCrime;
     private EditText mTitleField;
     private Button mDateButton;
     private CheckBox mSolvedCheckBox;
     private Button mReportButton;
+    private Button mSuspectButton;
 
     public static CrimeFragment newInstance(UUID crimeId){
         Bundle args=new Bundle();
@@ -111,6 +114,17 @@ public class CrimeFragment extends Fragment {
                 startActivity(i);
             }
         });
+        final Intent pickContact=new Intent(Intent.ACTION_PICK, ContactsContract.Contacts.CONTENT_URI);
+        mSuspectButton=(Button)view.findViewById(R.id.crime_suspect);
+        mSuspectButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivityForResult(pickContact,REQUEST_CONTACT);
+            }
+        });
+        if (mCrime.getSuspect()!=null){
+            mSuspectButton.setText(mCrime.getSuspect());
+        }
 
         return view;
     }
