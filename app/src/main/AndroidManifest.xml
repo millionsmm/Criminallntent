@@ -2,6 +2,10 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
 
     package="activitytest.example.com.criminallntent">
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"
+                     android:maxSdkVersion="18"/>
+    <uses-feature android:name="android.hardware.camera2"
+                  android:required="false"/>
 
     <application
         android:allowBackup="true"
