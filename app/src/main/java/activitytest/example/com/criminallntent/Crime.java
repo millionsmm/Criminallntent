@@ -15,16 +15,15 @@ public class Crime {
     private String mSuspect;
 
 
-
-
-    public Crime(){
+    public Crime() {
         this(UUID.randomUUID());
         //mId=UUID.randomUUID();//生成唯一id
         //mDate=new Date();
     }
-    public Crime(UUID id){
-        mId=id;
-        mDate=new Date();
+
+    public Crime(UUID id) {
+        mId = id;
+        mDate = new Date();
     }
 
     public UUID getId() {
@@ -54,6 +53,7 @@ public class Crime {
     public void setSolved(boolean solved) {
         mSolved = solved;
     }
+
     public String getSuspect() {
         return mSuspect;
     }
@@ -62,7 +62,7 @@ public class Crime {
         mSuspect = suspect;
     }
 
-    public String getPhotoFilename(){
-        return "IMG_" +getId().toString()+".jpg";
+    public String getPhotoFilename() {
+        return "IMG_" + getId().toString() + ".jpg";
     }
 }
