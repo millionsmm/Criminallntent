@@ -31,7 +31,7 @@ public class Crime {
     }
 
     public String getTitle() {
-        return "asdasd";
+        return mTitle;
     }
 
     public void setTitle(String title) {
