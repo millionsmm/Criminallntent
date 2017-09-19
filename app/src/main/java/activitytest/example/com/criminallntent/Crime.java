@@ -1,7 +1,7 @@
 package activitytest.example.com.criminallntent;
 
-import java.util.UUID;
 import java.util.Date;
+import java.util.UUID;
 
 /**
  * Created by Administrator on 2017/6/25 0025.
@@ -31,7 +31,7 @@ public class Crime {
     }
 
     public String getTitle() {
-        return mTitle;
+        return "asdasd";
     }
 
     public void setTitle(String title) {
